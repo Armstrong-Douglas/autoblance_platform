@@ -149,27 +149,32 @@ int main(void)
 
 		if (0 == count)
 		{
-			if (X_Angle > 0)
-				STEPMOTOR_X_DIR_MOVE_DOWN();
+			if (X_Angle > 0)							// 角度大于0，说明高于基准面
+				STEPMOTOR_X_DIR_MOVE_DOWN();			// DIR控制位为1，滑块向下运动
 			else 
 				STEPMOTOR_X_DIR_MOVE_UP();
 				
 
 			if (Y_Angle > 0)
-				STEPMOTOR_Y_DIR_MOVE_DOWN();
+				STEPMOTOR_Y_DIR_MOVE_DOWN();			// 同上
 			else				
 				STEPMOTOR_Y_DIR_MOVE_UP();
 			
 
-			STEPMOTOR_X_ENABLE();
+			STEPMOTOR_X_ENABLE();						// EN=0 使能电机控制位
 			STEPMOTOR_Y_ENABLE();
 		}
 			
-		if (X_Angle <= 0.25)
-			STEPMOTOR_X_DISABLE();
-		if (Y_Angle <= 0.25)
-			STEPMOTOR_Y_DISABLE();
-
+		if ( X_Angle <= 0.25)							// 角度的绝对值小于0.25即认为平台处于水平位置
+		{	
+			STEPMOTOR_X_DISABLE();						// 系统的误差来源于： 1.平衡台的组装（电机柱不稳，泡沫底座未能水平）        
+			HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+		}												//					   2.倾角传感器的供电电压不稳定 
+		if ( Y_Angle <= 0.25)							//					   3.电机的参数不明，只能根据经验调节速度和转动角度，A4988
+		{
+			STEPMOTOR_Y_DISABLE();						//驱动器采用32分频，尽量让电机最小角度转动
+			HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_2);	
+		}												//					   4.闭环控制 平台倾斜角度的输出和电机的反应存在时间差，导致有误差
 	 	++count;
 	 }
 

@@ -15,6 +15,8 @@
 #define MAX_CAL_NUM	(10)
 #define DIVISOR		(MAX_CAL_NUM - 2)
 
+#define ABS(a)	((a) >= 0 ? (a):(-a) )
+
 /*	blance_adc.c function	*/
 extern void adc_init(void);
 extern void angle_calculate(double *x_angle,double *y_angle);
