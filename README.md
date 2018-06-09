@@ -14,10 +14,10 @@ ADC：
 
 电机X轴:
 	PA0			TIM2_CHAN1		PWM输出
-	PB3							      DIR正反转
-	PB4							      EN使能
+	PB3						DIR正反转
+	PB4						EN使能
 	
 电机Y轴:
 	PA1			TIM2_CHAN2		PWM输出
-	PB5							      DIR正反转
-	PB6							      EN使能
+	PB5						DIR正反转
+	PB6						EN使能
