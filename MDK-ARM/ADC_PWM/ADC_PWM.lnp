@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"adc_pwm\startup_stm32f103xb.o"
+"adc_pwm\system_stm32f1xx.o"
+"adc_pwm\stm32f1xx_it.o"
+"adc_pwm\stm32f1xx_hal_msp.o"
+"adc_pwm\main.o"
+"adc_pwm\blance_adc.o"
+"adc_pwm\stm32f1xx_hal_cortex.o"
+"adc_pwm\stm32f1xx_hal_flash_ex.o"
+"adc_pwm\stm32f1xx_hal_tim_ex.o"
+"adc_pwm\stm32f1xx_hal_rcc_ex.o"
+"adc_pwm\stm32f1xx_hal_adc_ex.o"
+"adc_pwm\stm32f1xx_hal_dma.o"
+"adc_pwm\stm32f1xx_hal_tim.o"
+"adc_pwm\stm32f1xx_hal_pwr.o"
+"adc_pwm\stm32f1xx_hal_rcc.o"
+"adc_pwm\stm32f1xx_hal_flash.o"
+"adc_pwm\stm32f1xx_hal_uart.o"
+"adc_pwm\stm32f1xx_hal_gpio_ex.o"
+"adc_pwm\stm32f1xx_hal.o"
+"adc_pwm\stm32f1xx_hal_gpio.o"
+"adc_pwm\stm32f1xx_hal_adc.o"
+--library_type=microlib --strict --scatter "ADC_PWM\ADC_PWM.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "ADC_PWM.map" -o ADC_PWM\ADC_PWM.axf
